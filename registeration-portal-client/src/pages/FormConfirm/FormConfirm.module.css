@@ -1,0 +1,37 @@
+.container {
+  margin-top: 4rem;
+
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  margin-inline: auto;
+}
+
+.inputField {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.label {
+  color: #333;
+}
+
+.registerButton {
+  height: 55px;
+  width: 100%;
+  color: #943737;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: rgb(var(--accent-color));
+}
+.registerButton:hover {
+  background-color: rgb(var(--accent-color-dark));
+}

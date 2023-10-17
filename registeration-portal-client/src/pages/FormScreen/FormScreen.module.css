@@ -1,0 +1,73 @@
+.container {
+  margin-top: 4rem;
+
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  margin-inline: auto;
+}
+
+.inputNumber::-webkit-outer-spin-button,
+.inputNumber::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.inputField {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.inputField label {
+  color: #333;
+}
+
+.form
+  :where(
+    .inputField input,
+    .inputField textarea,
+    .inputField select,
+    .inputField option
+  ) {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline-color: transparent;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  background-color: white;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+
+.form
+  :where(
+    .inputField input:focus,
+    .inputField textarea:focus,
+    .inputField select:focus,
+    .inputField option:focus
+  ) {
+  outline: 1px solid black;
+  border-color: transparent;
+}
+
+.registerButton {
+  height: 55px;
+  width: 100%;
+  color: #943737;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: rgb(var(--accent-color));
+}
+.registerButton:hover {
+  background-color: rgb(var(--accent-color-dark));
+}
