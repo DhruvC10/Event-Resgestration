@@ -1,7 +1,9 @@
 import { Response } from 'express';
+import QRCode from 'qrcode';
 import ticketServices from '../services/ticket.services';
 import { TicketForm } from '../types/Ticket.types';
 import { TypeRequestBody } from '../types/request.types';
+import sendRegisterationConfirmationMail from '../services/mail/sendEmailVerificationMail';
 
 const ticketController = {
   validate: async (req: TypeRequestBody<{ email: string }>, res: Response) => {
@@ -46,18 +48,21 @@ const ticketController = {
           .json({ message: 'Cannot book more than 3 Ticket on a Email' });
       }
 
-      // TODO: Rayzor pay logic here
+      // TODO: Razor pay logic here
       const ticketId = 'some ticket id';
 
       // Store the result in the database
       const result = await ticketServices.createTicket(ticket, ticketId);
-      console.log(result);
 
-      // TODO: Send Email to the user
+      // create a qr blob for
+      const ticketQR = await QRCode.toDataURL(result._id.toString());
 
-      // TODO: create a qr blob for
+      // Send Email to the user
+      await sendRegisterationConfirmationMail(ticket, ticketQR);
 
-      return res.status(200).json({ message: 'Can Book Ticket' });
+      return res
+        .status(200)
+        .json({ message: 'Can Book Ticket', ticket, ticketQR });
     } catch (error) {
       console.log(error);
       return res.status(500).json({ message: 'Something went wrong...' });
